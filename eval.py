@@ -2,8 +2,8 @@ import os,sys,math
 
 # Format:  one sentence per line.  Space separated POS tags
 if len(sys.argv) < 3:
-  print "python eval.py predicted.txt gold.txt"
-  print "Format:  One sentence / line.  Space separated POS tags"
+  print("python eval.py predicted.txt gold.txt")
+  print("Format:  One sentence / line.  Space separated POS tags")
   sys.exit()
 
 G = []
@@ -53,7 +53,7 @@ for count, gold, pred in Pairs:
     Used_Pred.add(pred)
     Correct += count
     Mapping.append((gold,pred))
-print "1-1: %6.3f" % (100.0*Correct/Total)
+print("1-1: %6.3f" % (100.0*Correct/Total))
 
 ## Many to 1 evaluation
 Used_Pred = set()
@@ -62,7 +62,7 @@ for count, gold, pred in Pairs:
   if pred not in Used_Pred:
     Used_Pred.add(pred)
     Correct += count
-print "M-1: %6.3f" % (100.0*Correct/Total)
+print("M-1: %6.3f" % (100.0*Correct/Total))
 
 ## VM evaluation
 ## Homogeneity:  
@@ -108,5 +108,5 @@ c = 1 - (clusterGivenTag / clusterEntropy)
 h = 1 - (tagGivenCluster / tagEntropy)
 
 
-print "VM:  %6.3f  of %5.3f  %5.3f" % (100 * 2*h*c/(h+c),h,c)
-print "VI:  %6.3f  of %5.3f  %5.3f" % (clusterGivenTag + tagGivenCluster, clusterGivenTag, tagGivenCluster)
+print("VM:  %6.3f  of %5.3f  %5.3f" % (100 * 2*h*c/(h+c),h,c))
+print("VI:  %6.3f  of %5.3f  %5.3f" % (clusterGivenTag + tagGivenCluster, clusterGivenTag, tagGivenCluster))
